@@ -76,6 +76,11 @@ public class ColibriIQProvider
                 SourceRidGroupPacketExtension.NAMESPACE,
                 new DefaultPacketExtensionProvider<>(
                         SourceRidGroupPacketExtension.class));
+        ProviderManager.addExtensionProvider(
+                MediaIDExtension.ELEMENT_NAME,
+                MediaIDExtension.NAMESPACE,
+                new DefaultPacketExtensionProvider<>(
+                        MediaIDExtension.class));
 
         ExtensionElementProvider parameterProvider
                 = new DefaultPacketExtensionProvider<>(
@@ -187,6 +192,12 @@ public class ColibriIQProvider
                     = (RTPHdrExtPacketExtension) childExtension;
 
             channel.addRtpHeaderExtension(rtpHdrExtPacketExtension);
+        }
+        else if (childExtension instanceof MediaIDExtension) {
+            MediaIDExtension mediaIDExtension
+                    = (MediaIDExtension) childExtension;
+
+            channel.setMediaId(mediaIDExtension.getID());
         }
         else
         {

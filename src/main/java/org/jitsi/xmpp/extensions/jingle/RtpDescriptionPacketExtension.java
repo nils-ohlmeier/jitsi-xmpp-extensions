@@ -79,6 +79,11 @@ public class RtpDescriptionPacketExtension
     private List<ExtensionElement> children;
 
     /**
+     * The MID to be used for the RTP stream.
+     */
+    private MediaIDExtension mediaId;
+
+    /**
      * Creates a new <tt>RtpDescriptionPacketExtension</tt>.
      */
     public RtpDescriptionPacketExtension()
@@ -296,4 +301,8 @@ public class RtpDescriptionPacketExtension
     {
         return extmapList;
     }
+
+    public MediaIDExtension getMediaId() { return mediaId; }
+
+    public void setMediaId(MediaIDExtension mediaId) { this.mediaId = mediaId; }
 }

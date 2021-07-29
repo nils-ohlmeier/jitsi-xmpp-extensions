@@ -2,6 +2,8 @@ package org.jitsi.xmpp.extensions.jingle;
 
 import org.jitsi.xmpp.extensions.*;
 
+import java.nio.charset.StandardCharsets;
+
 public class MediaIDExtension
         extends AbstractPacketExtension
 {
@@ -28,6 +30,11 @@ public class MediaIDExtension
         super(NAMESPACE, ELEMENT_NAME);
     }
 
+    public MediaIDExtension(String id)
+    {
+        super(NAMESPACE, ELEMENT_NAME);
+        this.setID(id);
+    }
     /**
      * Set the ID.
      *
@@ -35,7 +42,17 @@ public class MediaIDExtension
      */
     public void setID(String id)
     {
-        setAttribute(ID_ATTR_NAME, id);
+        if (StandardCharsets.US_ASCII.newEncoder().canEncode(id))
+        {
+            if (id.length() > 16)
+            {
+                throw new IllegalArgumentException("id exceeds maximum length of 16 bytes");
+            }
+            setAttribute(ID_ATTR_NAME, id);
+        } else
+        {
+            throw new IllegalArgumentException("id contains non-ASCII characters");
+        }
     }
 
     /**
