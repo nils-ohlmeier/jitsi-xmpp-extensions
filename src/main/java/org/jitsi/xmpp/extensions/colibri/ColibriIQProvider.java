@@ -197,7 +197,7 @@ public class ColibriIQProvider
             MediaIDExtension mediaIDExtension
                     = (MediaIDExtension) childExtension;
 
-            channel.setMediaId(mediaIDExtension.getID());
+            channel.setMediaId(mediaIDExtension);
         }
         else
         {

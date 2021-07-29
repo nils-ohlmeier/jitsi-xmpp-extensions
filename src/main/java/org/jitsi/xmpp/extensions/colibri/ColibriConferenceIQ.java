@@ -720,7 +720,7 @@ public class ColibriConferenceIQ
          */
         private int[] ssrcs = NO_SSRCS;
 
-        private String mediaId = "";
+        private MediaIDExtension mediaId;
 
         /** Initializes a new <tt>Channel</tt> instance. */
         public Channel()
@@ -874,7 +874,7 @@ public class ColibriConferenceIQ
             return (direction == null) ? SENDRECV : direction;
         }
 
-        public String getMediaId() { return mediaId; }
+        public MediaIDExtension getMediaId() { return mediaId; }
 
         /**
          * Gets the IP address (as a <tt>String</tt> value) of the host on which
@@ -1279,7 +1279,7 @@ public class ColibriConferenceIQ
             this.direction = direction;
         }
 
-        public void setMediaId(String mediaId)
+        public void setMediaId(MediaIDExtension mediaId)
         {
             this.mediaId = mediaId;
         }
