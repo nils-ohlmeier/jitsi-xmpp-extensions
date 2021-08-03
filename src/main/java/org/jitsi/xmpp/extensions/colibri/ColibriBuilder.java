@@ -133,6 +133,13 @@ public class ColibriBuilder
             added = true;
         }
 
+        MediaIDExtension mediaId = description.getMediaId();
+        if (mediaId != null)
+        {
+            channel.setMediaId(mediaId);
+            added = true;
+        }
+
         return added;
     }
 
