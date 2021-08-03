@@ -56,6 +56,14 @@ public class JingleIQProvider extends IQProvider<JingleIQ>
                         <PayloadTypePacketExtension>(
                         PayloadTypePacketExtension.class));
 
+        //<media-id/> provider
+        ProviderManager.addExtensionProvider(
+                MediaIDExtension.ELEMENT_NAME,
+                RtpDescriptionPacketExtension.NAMESPACE,
+                new DefaultPacketExtensionProvider
+                        <MediaIDExtension>(
+                                MediaIDExtension.class));
+
         //<parameter/> provider
         ProviderManager.addExtensionProvider(
                 ParameterPacketExtension.ELEMENT_NAME,
