@@ -1139,9 +1139,13 @@ public class ColibriConferenceIQ
             List<PayloadTypePacketExtension> payloadTypes = getPayloadTypes();
             Collection<RTPHdrExtPacketExtension> rtpHdrExtPacketExtensions
                     = getRtpHeaderExtensions();
+            MediaIDExtension id = getMediaId();
             List<SourcePacketExtension> sources = getSources();
             List<SourceGroupPacketExtension> sourceGroups = getSourceGroups();
             int[] ssrcs = getSSRCs();
+
+            if (id != null)
+                xml.append(id.toXML());
 
             for (PayloadTypePacketExtension payloadType : payloadTypes)
                 xml.append(payloadType.toXML());
