@@ -831,6 +831,12 @@ public class ColibriIQProvider
                             peName = name;
                             peNamespace = namespace;
                         }
+                        else if (MediaIDExtension.ELEMENT_NAME.equals(name) &&
+                                MediaIDExtension.NAMESPACE.equals(parser.getNamespace()))
+                        {
+                            peName = name;
+                            peNamespace = MediaIDExtension.NAMESPACE;
+                        }
                         else if (RawUdpTransportPacketExtension.ELEMENT_NAME
                                     .equals(name)
                                 && RawUdpTransportPacketExtension.NAMESPACE
